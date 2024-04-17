@@ -1,0 +1,8 @@
+build:
+  gpu: true
+  python_version: "3.11"
+  python_packages:
+    - "faster-whisper==0.10.0"
+    - "openai-whisper==20231117"
+
+predict: "predict.py:Predictor"

@@ -12,7 +12,7 @@ SUPPORTED_MODEL_NAMES = [
 ]
 
 
-class ModelOutput(BaseModel):
+class Output(BaseModel):
     segments: Any
     preview: str
     srt_file: Path
@@ -39,7 +39,7 @@ class Predictor(BasePredictor):
                 default=True,
                 description="Enable the voice activity detection (VAD) to filter out parts of the audio without speech.",
             ),
-    ) -> ModelOutput:
+    ) -> Output:
         if model_name.endswith(".en") and language != "en":
             print("English only model detected, forcing language to 'en'!")
             language = "en"
@@ -98,7 +98,7 @@ class Predictor(BasePredictor):
         if len(preview) > 5:
             preview += f"... (only the first 5 segments are shown, {len(segments) - 5} more segments in subtitles)"
 
-        return ModelOutput(
+        return Output(
             segments=text,
             preview=preview,
             srt_file=Path(out_path_srt),

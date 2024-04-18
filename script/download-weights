@@ -10,4 +10,4 @@ os.makedirs("whisper-cache", exist_ok=True)
 for model in SUPPORTED_MODEL_NAMES:
     print(f"Downloading {model}...")
 
-    download_model(model, cache_dir="whisper-cache")
+    download_model(model, cache_dir="whisper-cache", local_files_only=False)
